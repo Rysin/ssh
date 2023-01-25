@@ -1,8 +1,6 @@
 from ssh_utils import ssh_connect
 import pytest
 
-
-
 @pytest.fixture
 def ssh_client():
     print('Running Fixuture!')

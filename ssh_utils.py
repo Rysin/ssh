@@ -1,6 +1,7 @@
 import paramiko
 from datetime import datetime
 
+
 def get_time_stamp() -> str:
     timestamp = datetime.timestamp(datetime.now())
     date_time = datetime.fromtimestamp(timestamp)
@@ -8,14 +9,16 @@ def get_time_stamp() -> str:
 
     return str_date_time
 
-def ssh_command(ssh_client_object : object, command : str) -> str:
+
+def ssh_command(ssh_client_object: object, command: str) -> str:
     ssh_client_object.invoke_shell()
     stdin, stdout, stderr = ssh_client_object.exec_command(command)
     output = stdout.read().decode()
 
     return output
 
-def ssh_connect(port : int, ip : str, username : str, password : str) -> object:
+
+def ssh_connect(port: int, ip: str, username: str, password: str) -> object:
     try:
         ssh_cl = paramiko.SSHClient()
         ssh_cl.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -26,12 +29,14 @@ def ssh_connect(port : int, ip : str, username : str, password : str) -> object:
 
     return ssh_cl
 
-def append_data(filename : str, line : str) -> None:
+
+def append_data(filename: str, line: str) -> None:
     try:
         with open(filename, 'a+') as file:
             file.write(f'{line}\n')
     except Exception as e:
         print(f'Failed to create logger file due to error :\n{e}')
+
 
 if __name__ == '__main__':
     # print(get_time_stamp())
