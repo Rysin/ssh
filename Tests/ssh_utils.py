@@ -20,6 +20,7 @@ def ssh_command(ssh_client_object: object, command: str) -> str:
 
 def ssh_connect(port: int, ip: str, username: str, password: str) -> object:
     try:
+        print(f'Paramiko : {paramiko.__file__}')
         ssh_cl = paramiko.SSHClient()
         ssh_cl.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh_cl.connect(port=port, hostname=ip, username=username, password=password)
@@ -30,7 +31,7 @@ def ssh_connect(port: int, ip: str, username: str, password: str) -> object:
     return ssh_cl
 
 
-def append_data(filename: str, line: str) -> None:
+def append_data(filename: str, line: any) -> None:
     try:
         with open(filename, 'a+') as file:
             file.write(f'{line}\n')
