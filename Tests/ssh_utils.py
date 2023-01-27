@@ -5,22 +5,17 @@ from datetime import datetime
 def get_time_stamp() -> str:
     timestamp = datetime.timestamp(datetime.now())
     date_time = datetime.fromtimestamp(timestamp)
-    str_date_time = date_time.strftime("%d_%m_%Y-%H_%M_%S")
-
-    return str_date_time
+    return date_time.strftime("%d_%m_%Y-%H_%M_%S")
 
 
 def ssh_command(ssh_client_object: object, command: str) -> str:
     ssh_client_object.invoke_shell()
     stdin, stdout, stderr = ssh_client_object.exec_command(command)
-    output = stdout.read().decode()
-
-    return output
+    return stdout.read().decode()
 
 
 def ssh_connect(port: int, ip: str, username: str, password: str) -> object:
     try:
-        print(f'Paramiko : {paramiko.__file__}')
         ssh_cl = paramiko.SSHClient()
         ssh_cl.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh_cl.connect(port=port, hostname=ip, username=username, password=password)

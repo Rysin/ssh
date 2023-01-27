@@ -6,12 +6,14 @@ import logging
 # log_filename = os.path.normpath('logs/ssh_cpu.log')
 log_filename = os.path.join('logs', 'ssh_cpu.log')
 
-
-logging.basicConfig(filename=log_filename, format='%(asctime)s,%(msecs)03d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
-    datefmt='%Y-%m-%d:%H:%M:%S',
-    level=logging.DEBUG)
+logging.basicConfig(filename=log_filename,
+                    format='%(asctime)s,%(msecs)03d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
+                    datefmt='%Y-%m-%d:%H:%M:%S',
+                    level=logging.DEBUG)
 
 logger = logging.getLogger()
+
+
 # logger.debug("This is a debug log")
 # logger.info("This is an info log")
 # logger.critical("This is critical")
