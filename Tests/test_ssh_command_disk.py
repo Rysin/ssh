@@ -1,7 +1,9 @@
 from ssh_utils import ssh_command, append_data, get_time_stamp
+import pytest
 import os
 
 
+@pytest.mark.cli
 def test_ssh_command_disk(ssh_client):
     filename = os.path.normpath('Tests/ssh_disk_logs.txt')
     disk_stats = ssh_command(ssh_client_object=ssh_client, command='df /dev/sda1 -h | grep /dev/sda1')

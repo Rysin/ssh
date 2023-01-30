@@ -1,6 +1,8 @@
 from ssh_utils import ssh_command, append_data, get_time_stamp
 import os
+import pytest
 
+@pytest.mark.cli
 def test_ssh_command_memory(ssh_client):
     filename = os.path.normpath('Tests/ssh_memory_logs.txt')
     memory_stat_free = ssh_command(ssh_client_object=ssh_client, command='cat /proc/meminfo | grep MemFree')

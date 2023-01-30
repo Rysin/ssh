@@ -1,6 +1,6 @@
 import os
 from ssh_utils import ssh_command, append_data, get_time_stamp
-
+import pytest
 import logging
 
 # log_filename = os.path.normpath('logs/ssh_cpu.log')
@@ -20,6 +20,7 @@ logger = logging.getLogger()
 # logger.error("An error occurred")
 
 
+@pytest.mark.cli
 def test_ssh_command_cpu(ssh_client):
     logger.debug("Started SSH_CPU Test")
     command = 'mpstat | grep all'
